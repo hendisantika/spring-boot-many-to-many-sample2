@@ -12,3 +12,7 @@
 Movie(id=1, name=Movie 1, description=Movie 1 description, releaseDate=2020, users=null)
 Movie(id=2, name=Movie 2, description=Movie 2 description, releaseDate=2021, users=null)
 ```
+
+### Diagram
+
+![Diagram](img/diagram.png "Diagram")
