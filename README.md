@@ -9,10 +9,10 @@
 5. Check the logs
 
 ```shell
-Movie(id=1, name=Movie 1, description=Movie 1 description, releaseDate=2020, users=null)
-Movie(id=2, name=Movie 2, description=Movie 2 description, releaseDate=2021, users=null)
+The user John Doe gave a rate of 4 to the movie Movie 1
+The user John Doe gave a rate of 5 to the movie Movie 2
 ```
 
 ### Diagram
 
-![Diagram](img/diagram.png "Diagram")
+![Diagram](img/diagram2.png "Diagram")
