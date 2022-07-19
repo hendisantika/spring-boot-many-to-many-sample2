@@ -10,7 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -22,36 +23,37 @@ import java.util.Set;
  * Email: hendisantika@gmail.com
  * Telegram : @hendisantika34
  * Date: 7/19/22
- * Time: 11:24
+ * Time: 11:25
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "movies")
+@Table(name = "users")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Movie {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private Integer id;
 
-    @Column(nullable = false, length = 150)
+    @Column(unique = true, nullable = false, length = 100)
+    private String email;
+
+    @Column(unique = true, nullable = false, length = 100)
     private String name;
 
-    @Lob
-    private String description;
+    @ManyToMany()
+    @JoinTable(
+            name = "users_movies",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    private Set<Movie> movies;
 
-    @Column(nullable = false)
-    private Integer releaseDate;
-
-    @ManyToMany(mappedBy = "movies")
-    private Set<User> users;
-
-    public Movie(String name, String description, Integer releaseDate) {
+    public User(String email, String name) {
+        this.email = email;
         this.name = name;
-        this.description = description;
-        this.releaseDate = releaseDate;
     }
 }
